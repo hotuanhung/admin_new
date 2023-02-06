@@ -38,7 +38,7 @@
         <button class="btn btn-primary shadow-md mr-2"><a href="{{  route('admin.users') }}">Back to User List</a></button>
     </div>
 
- <!-- BEGIN: user Details -->
+<!-- BEGIN: user Details -->
 <div class="intro-y grid grid-cols-11 gap-5 mt-5">
     <div class="col-span-12 lg:col-span-4 2xl:col-span-3">
         <div class="box p-5 rounded-md">
@@ -92,19 +92,58 @@
             </div>
             
         </div>
-
-        <div class="box p-5 rounded-md">
+        <br>
+        <div class="col-span-12 lg:col-span-4 2xl:col-span-3">
+            <div class="box p-5 rounded-md">
+                <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">
+                    <div class="font-medium text-base truncate">User Coupons</div>
+                    
+                </div>
+                <div class="overflow-auto lg:overflow-visible -mt-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="whitespace-nowrap !py-5">Coupon</th>
+                                <th class="whitespace-nowrap text-center">Discount</th>
+                                <th class="whitespace-nowrap text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($coupons as $coupon)
+                                <tr>
+                                    <td class="!py-4">
+                                        <div class="flex items-center">
+                                            
+                                            <a href="" class="font-medium whitespace-nowrap ml-4">{{ $coupon->coupon->coupon_code }}</a>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">{{ $coupon->coupon->discount}}%</td>
+                                
+                                    <td class="table-report__action w-56">
+                                        <div class="flex justify-center items-center">
+                                            <a class="flex items-center text-danger whitespace-nowrap mr-5" href="">
+                                                <i data-lucide="trash" class="w-4 h-4 mr-1"></i> Delete
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <button class="btn btn-primary items-center shadow-md mr-2"><a href="">Add Coupon</a></button>
+            </div>
             
         </div>
         
         
         
     </div>
-     <div class="col-span-12 lg:col-span-7 2xl:col-span-8">
+    <div class="col-span-12 lg:col-span-7 2xl:col-span-8">
         <div class="box p-5 rounded-md">
             <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">
                 <div class="font-medium text-base truncate">Order List</div>
-               
             </div>
             <div class="overflow-auto lg:overflow-visible -mt-3">
                 <table class="table table-striped">
@@ -140,7 +179,7 @@
                 </table>
             </div>
         </div> 
-        
+
     </div> 
 </div>
 @endsection    

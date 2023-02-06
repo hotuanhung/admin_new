@@ -11,12 +11,12 @@ class AdminUserComponent extends Component
 {
     use WithPagination;
     public $user_id;
-    // public function deleteUser()
-    // {
-    //     $item=Item::find($this->product_id);
-    //     $item->delete();
-    //     session()->flash('message','Product has been deleted!');
-    // }
+    public function deleteUser($id)
+    {
+        $delete_user = User::where('id', $id)->first();
+        $delete_user->delete();
+        session()->flash('message','Delete sucessfully!');
+    }
     public function render()
     {
         $user= User::where('type','1')->orderBy('id','ASC')->paginate(10); 

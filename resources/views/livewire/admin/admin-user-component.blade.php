@@ -1,5 +1,6 @@
 @include('layouts.app')
 @section('main')
+<div>
     <!-- BEGIN: Top Bar -->
     <div class="top-bar">
 
@@ -49,6 +50,10 @@
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+            @if (session()->has('message'))
+            <div class="alert alert-success show mb-2" role="alert">{{ session('message') }}</div>
+                
+            @endif
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
@@ -80,14 +85,12 @@
                             $gender= 'Unknown'
                             @endphp
                             @break
-    
                                 
                         @endswitch
-                   
                         <tr class="intro-x">
                             
                             <td>
-                                <a href=""class="font-medium whitespace-nowrap">{{ $human->lastname}}{{ $human->firstname }}</a>
+                                <a href=""class="font-medium whitespace-nowrap">{{ $human->lastname}} {{ $human->firstname }}</a>
                                 <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $human->email }}</div>
                             </td>
                             <td class="text-center text-primary">{{ $gender}}</td>
@@ -102,7 +105,7 @@
                                     <a class="flex items-center mr-3" href="{{ route('admin.user.edit',['user_id'=>$human->id]) }}">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
-                                    <a class="flex items-center text-danger" href="#" onclick="deleteConfirm({{ $human->id }})" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                    <a class="flex items-center text-danger" href="javascript:;" wire:click.prevent='deleteUser({{ $human->id }})' >
                                         <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
                                     </a>
                                 </div>
@@ -112,12 +115,11 @@
                     {{-- {{ $product->links() }} --}}
                 </tbody>
             </table>
-           
         </div>
         <!-- BEGIN: Modal Toggle -->
      
      <!-- BEGIN: Modal Content -->
-     <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+     {{-- <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
          <div class="modal-dialog">
              <div class="modal-content">
                  <div class="modal-body p-0">
@@ -131,7 +133,8 @@
                  </div>
              </div>
          </div>
-     </div> <!-- END: Modal Content -->
+     </div>  --}}
+     <!-- END: Modal Content -->
         <!-- END: Data List -->
         <!-- BEGIN: Pagination -->
         {{-- <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
@@ -182,4 +185,5 @@
             </select>
         </div> --}}
         <!-- END: Pagination -->
+    </div>
 @endsection

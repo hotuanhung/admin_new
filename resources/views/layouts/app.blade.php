@@ -10,6 +10,7 @@
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="{{ asset('admin/dist/css/app.css') }}" />
         <!-- END: CSS Assets-->
+        @livewireStyles
     </head>
     <!-- END: Head -->
     <body class="py-5">
@@ -17,7 +18,7 @@
         <div class="mobile-menu md:hidden">
             <div class="mobile-menu-bar">
                 <a href="" class="flex mr-auto">
-                    <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('admin/dist/images/logo.svg') }}">
+                    <img alt="Admin" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
                 </a>
                 <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
             </div>
@@ -30,7 +31,6 @@
                             <div class="menu__title"> Dashboard <i data-lucide="chevron-down" class="menu__sub-icon transform rotate-180"></i> </div>
                         </a>
                     </li>
-                  
                     <li>
                         <a href="javascript:;" class="menu">
                             <div class="menu__icon"> <i data-lucide="shopping-bag"></i> </div>
@@ -43,7 +43,6 @@
                                     <div class="menu__title"> Categories </div>
                                 </a>
                             </li>
-                           
                             <li>
                                 <a href="javascript:;" class="menu">
                                     <div class="menu__icon"> <i data-lucide="activity"></i> </div>
@@ -70,7 +69,8 @@
                                 <a href="javascript:;" class="menu">
                                     <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="menu__title"> Coupons
-                                         <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
+                                    <i data-lucide="chevron-down" class="menu__sub-icon "></i> 
+                                    </div>
                                 </a>
                                 <ul class="">
                                     <li>
@@ -96,7 +96,6 @@
 
                         </ul>
                     </li>
-              
                     
                     
     
@@ -120,8 +119,7 @@
                             </li>
                             
                         </ul>
-                    </li>
-            
+                    </li>    
                 </ul>
             </div>
         </div>
@@ -130,7 +128,7 @@
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
                 <a href="" class="intro-x flex items-center pl-5 pt-4">
-                    <img alt="Midone - HTML Admin Template" class="w-6" src="dist/images/logo.svg">
+                    <img alt="Admin" class="w-6" src="dist/images/logo.svg">
                     <span class="hidden xl:block text-white text-lg ml-3"> Admin </span> 
                 </a>
                 <div class="side-nav__devider my-6"></div>
@@ -251,50 +249,16 @@
                 <main class="main">
                     @yield('main')
                 </main>
-                <!-- BEGIN: Top Bar -->
-                <!-- <div class="top-bar">
-                   
-                    <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                        </ol>
-                    </nav>
                 
-                 
-                 
-                    <div class="intro-x dropdown w-8 h-8">
-                        <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                            <img alt="Midone - HTML Admin Template" src="dist/images/profile-5.jpg">
-                        </div>
-                        <div class="dropdown-menu w-56">
-                            <ul class="dropdown-content bg-primary text-white">
-                                <li class="p-2">
-                                    <div class="font-medium">Admin</div>
-                                    <div class="text-xs text-white/70 mt-0.5 dark:text-slate-500">Software Engineer</div>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider border-white/[0.08]">
-                                </li>
-                             
-                                <li>
-                                    <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div> -->
-                <!-- END: Top Bar -->
-          
             </div>
             <!-- END: Content -->
         </div>
-     
         
         <!-- BEGIN: JS Assets-->
 
-        <script src="{{ asset('admin/dist/js/app.js') }}"></script>
+        <script src="{{ asset('admin/dist/js/app.js') }}">
+        </script>
         <!-- END: JS Assets-->
+        @livewireScripts
     </body>
 </html>

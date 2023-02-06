@@ -19,11 +19,12 @@ class AdminUserDetailComponent extends Component
         $orders=Order::where('user_id',$this->user_id)->get();
         $sum=Order::where('user_id',$this->user_id)->sum('total');
         $user = User::where('id',$this->user_id)->first();
-        // $coupons = HasCoupon::where('user_id',$this->user_id)->get();
+        $coupons = HasCoupon::where('user_id',$this->user_id)->get();
         return view('livewire.admin.admin-user-detail-component',[
             'user'=> $user,
             'orders'=> $orders,
-            'sum'=>$sum
+            'sum'=>$sum,
+            'coupons'=>$coupons
         ]);
     }
 }

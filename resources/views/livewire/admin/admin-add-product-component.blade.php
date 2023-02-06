@@ -47,7 +47,10 @@
                         <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Product Information
                     </div>
                     <div class="mt-5">
-                        <div class="form items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
+                        @if (session()->has('message'))
+                            <div class="alert alert-success text-center">{{ session('message') }}</div>
+                        @endif
+                        <form wire:submit.prevent="submit" class="items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0" >
                             <div class="form-label ">
                                 <div class="text-left">
                                     <div class="flex items-center">
@@ -60,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-name" type="text" class="form-control" placeholder="Product name">
+                                <input id="product-name" type="text" class="form-control" placeholder="Product name" wire:model="name">
                                 <div class="form-help text-right">Maximum character : 255</div>
                             </div>
                             <!--Catgory-->
@@ -73,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select id="category" class="form-select">
+                                <select id="category" class="form-select" wire:model="type">
                                     <option value="1">Clothes</option>
                                         <option value="2">Shoes</option>
                                         <option value="3">Shirt</option>
@@ -92,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select id="category" class="form-select">
+                                <select id="category" class="form-select" wire:model="for_male">
                                     <option value="1">Men</option>
                                     <option value="2">Women</option>
                                     <option value="3">Both</option>
@@ -109,7 +112,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-name" type="text" class="form-control" placeholder="Quantity">
+                                <input id="product-name" type="text" class="form-control" placeholder="Quantity" wire:model="quantity">
                                 <div class="form-help text-right">Enter the quantity</div>
                             </div>
                             <!--Price-->
@@ -125,8 +128,8 @@
                                 <div class="sm:grid grid-cols-4 gap-2">
                                     <div class="input-group w-full">
                                         <div class="input-group-text">$</div>
-                                        <input type="text" class="form-control mt-3 sm:mt-0 " placeholder="Price">
-                                        <input type="text" class="form-control mt-3 sm:mt-0" placeholder="Discount Price">
+                                        <input type="text" class="form-control mt-3 sm:mt-0 " placeholder="Price" wire:model="price">
+                                        <input type="text" class="form-control mt-3 sm:mt-0" placeholder="Discount Price" wire:model="discount_price">
                                     </div>  
 
                                 </div>
@@ -149,18 +152,18 @@
                             </div>
                             
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <textarea id="product-name" type="text" class="form-control" placeholder="Product description"></textarea>
+                                <textarea id="product-name" type="text" class="form-control" placeholder="Product description" wire:model="description"></textarea>
                                 <div class="form-help text-right">Maximum character 0/2000</div>
                             </div>
                             <br>
                             <br>
                             <div class="w-full mt-3 xl:mt-0 flex-1 xl:text-right">
-                                <button class="btn btn-primary w-44">
+                                <button class="btn btn-primary w-44" type="submit">
                                     <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Add Product
                                 </button>
                             </div>
                             <!--image-->
-                        </div>
+                        </form>
                         
                     </div>
                 </div>
