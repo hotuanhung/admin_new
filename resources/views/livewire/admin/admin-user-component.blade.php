@@ -67,7 +67,6 @@
                 </thead>
                 <tbody>
                     @foreach ($user as $human)
-                       
                         @switch($human->gender)
                             @case(0)
                                 @php
@@ -105,9 +104,10 @@
                                     <a class="flex items-center mr-3" href="{{ route('admin.user.edit',['user_id'=>$human->id]) }}">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
+                                    <div>
                                     <a class="flex items-center text-danger" href="javascript:;" wire:click.prevent='deleteUser({{ $human->id }})' >
                                         <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                    </a>
+                                    </a></div>
                                 </div>
                             </td>
                         </tr>

@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-name" type="text" class="form-control" placeholder="Product name" wire:model="name">
+                                <input id="product-name" type="text" class="form-control" placeholder="Product name" wire:model.lazy="name">
                                 <div class="form-help text-right">Maximum character : 255</div>
                             </div>
                             <!--Catgory-->
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select id="category" class="form-select" wire:model="type">
+                                <select id="category" class="form-select" wire:model.lazy="type">
                                     <option value="1">Clothes</option>
                                         <option value="2">Shoes</option>
                                         <option value="3">Shirt</option>
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select id="category" class="form-select" wire:model="for_male">
+                                <select id="category" class="form-select" wire:model.lazy="for_male">
                                     <option value="1">Men</option>
                                     <option value="2">Women</option>
                                     <option value="3">Both</option>
@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-name" type="text" class="form-control" placeholder="Quantity" wire:model="quantity">
+                                <input id="product-name" type="text" class="form-control" placeholder="Quantity" wire:model.lazy="quantity">
                                 <div class="form-help text-right">Enter the quantity</div>
                             </div>
                             <!--Price-->
@@ -128,8 +128,8 @@
                                 <div class="sm:grid grid-cols-4 gap-2">
                                     <div class="input-group w-full">
                                         <div class="input-group-text">$</div>
-                                        <input type="text" class="form-control mt-3 sm:mt-0 " placeholder="Price" wire:model="price">
-                                        <input type="text" class="form-control mt-3 sm:mt-0" placeholder="Discount Price" wire:model="discount_price">
+                                        <input type="text" class="form-control mt-3 sm:mt-0 " placeholder="Price" wire:model.lazy="price">
+                                        <input type="text" class="form-control mt-3 sm:mt-0" placeholder="Discount Price" wire:model.lazy="discount_price">
                                     </div>  
 
                                 </div>
@@ -152,13 +152,13 @@
                             </div>
                             
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <textarea id="product-name" type="text" class="form-control" placeholder="Product description" wire:model="description"></textarea>
+                                <textarea id="product-name" type="text" class="form-control" placeholder="Product description" wire:model.lazy="description"></textarea>
                                 <div class="form-help text-right">Maximum character 0/2000</div>
                             </div>
                             <br>
                             <br>
                             <div class="w-full mt-3 xl:mt-0 flex-1 xl:text-right">
-                                <button class="btn btn-primary w-44" type="submit">
+                                <button wire:click.prevent='submit()' class="btn btn-primary w-44" type="submit">
                                     <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Add Product
                                 </button>
                             </div>

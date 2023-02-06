@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-name" type="text" class="form-control" placeholder="Product name" wire:model="firstname">
+                                <input id="product-name" type="text" class="form-control" placeholder="First name" wire:model="firstname">
                                 <div class="form-help text-right">Maximum character : 255</div>
                             </div>
                             <div class="form-label ">
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-name" type="text" class="form-control" placeholder="First name" wire:model="firstname">
+                                <input id="product-name" type="mail" class="form-control" placeholder="First name" wire:model="email">
                                 <div class="form-help text-right">Maximum character : 255</div>
                             </div>
                             
