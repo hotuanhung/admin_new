@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="en" class="light">
     <!-- BEGIN: Head -->
     <head>
+      
         <meta charset="utf-8">
         <link href="#" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,8 @@
         <div class="mobile-menu md:hidden">
             <div class="mobile-menu-bar">
                 <a href="" class="flex mr-auto">
-                    <img alt="Admin" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
+                    <p class="w-6">Admin</p>
+                    
                 </a>
                 <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
             </div>
@@ -38,7 +39,7 @@
                         </a>
                         <ul class="">
                             <li>
-                                <a href="{{ route('admin.categories') }}" class="menu">
+                                <a href="{{ route('admin.categories',['category_id'=>'1']) }}" class="menu">
                                     <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="menu__title"> Categories </div>
                                 </a>
@@ -128,7 +129,7 @@
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
                 <a href="" class="intro-x flex items-center pl-5 pt-4">
-                    <img alt="Admin" class="w-6" src="dist/images/logo.svg">
+                    
                     <span class="hidden xl:block text-white text-lg ml-3"> Admin </span> 
                 </a>
                 <div class="side-nav__devider my-6"></div>
@@ -152,12 +153,11 @@
                         </a>
                         <ul class="">
                             <li>
-                                <a href="{{ route('admin.categories') }}" class="side-menu">
+                                <a href="{{ route('admin.categories',['category_id'=>'1'])  }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Categories </div>
                                 </a>
                             </li>
-                           
                             <li>
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
@@ -258,6 +258,7 @@
 
         <script src="{{ asset('admin/dist/js/app.js') }}">
         </script>
+        
         <!-- END: JS Assets-->
         @livewireScripts
     </body>

@@ -9,7 +9,6 @@ class HasCoupon extends Model
 {
     use HasFactory;
     protected $table = "has_coupon";
-  
     public function coupon()
     {
         return $this->belongsTo(Coupon::class,'coupon_id','id');

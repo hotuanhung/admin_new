@@ -142,7 +142,6 @@
                                 <div class="text-left">
                                     <div class="flex items-center">
                                         <div class="font-medium">Product Description</div>
-                                        <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
                                     </div>
                                     <div class="leading-relaxed text-slate-500 text-xs mt-3">
                                         <div>Make sure the product description provides a detailed explanation of your product so that it is easy to understand and find your product.</div>
@@ -155,6 +154,23 @@
                                 <textarea id="product-name" type="text" class="form-control" placeholder="Product description" wire:model.lazy="description"></textarea>
                                 <div class="form-help text-right">Maximum character 0/2000</div>
                             </div>
+                            <div class="form-label ">
+                                <div class="text-left">
+                                    <div class="flex items-center">
+                                        <div class="font-medium">Product Image</div>
+                                        <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
+                                        
+                                    </div>
+                                    <div class="leading-relaxed text-slate-500 text-xs mt-3">
+                                        <div>The image format is .jpg .jpeg .png and a minimum size of 300 x 300 pixels (For optimal images use a minimum size of 700 x 700 pixels).</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="w-full mt-3 xl:mt-0 flex-1">
+                                <textarea id="product-name" type="text" class="form-control" placeholder="Product Image" wire:model.lazy="image"></textarea>
+                               
                             <br>
                             <br>
                             <div class="w-full mt-3 xl:mt-0 flex-1 xl:text-right">

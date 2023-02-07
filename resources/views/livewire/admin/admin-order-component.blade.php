@@ -43,7 +43,7 @@
                 </div>
  
             </div>
-            <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 10 of {{ $orders->count() }} orders</div>
+           
             
         </div>
         <!-- BEGIN: Data List -->
@@ -108,6 +108,9 @@
                     @endforeach 
                 </tbody>
             </table>
+            <div>
+                {{ $orders->links('pagination::tailwind') }}
+            </div>
         </div>
         <!-- END: Data List -->
     </div>

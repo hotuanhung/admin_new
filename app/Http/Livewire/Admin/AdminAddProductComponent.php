@@ -21,7 +21,7 @@ class AdminAddProductComponent extends Component
     // public $created_at;
     public function updated($field)
     {
-       $this->validateOnly($field,[
+        $this->validateOnly($field,[
         'name'=>'required',
         'quantity'=>'required',
         'type'=>'required',
@@ -44,7 +44,7 @@ class AdminAddProductComponent extends Component
         $item->save();
         
         session()->flash('message','New product has been added sucessfully!');
-       $this->name = '';
+        $this->name = '';
         $this->quantity = '';
         $this->type = '';
         $this->for_male = '';

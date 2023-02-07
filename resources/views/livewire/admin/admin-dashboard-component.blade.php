@@ -187,7 +187,11 @@
                                 @endforeach
                         </tbody>
                     </table>
-                    {{$todayshowOrder->links()}}
+                    <div>
+                        {{ $todayshowOrder->links('pagination::tailwind') }}
+                    </div>
+                        
+                    
                 </div>
             </div>    
             <!-- END: Weekly Top Products -->

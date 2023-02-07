@@ -12,7 +12,8 @@ use Carbon\Carbon;
 use Livewire\WithPagination;
 
 class AdminDashboardComponent extends Component
-{    use WithPagination;
+{   
+    use WithPagination;
     public function render()
     {   
         $todayshowOrder = Order::whereDate('created_at',Carbon::today())->paginate(5);

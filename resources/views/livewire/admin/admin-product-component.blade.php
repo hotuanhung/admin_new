@@ -1,5 +1,6 @@
 @include('layouts.app')
 @section('main')
+
     <!-- BEGIN: Top Bar -->
 <div class="top-bar">
 
@@ -38,7 +39,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <button class="btn btn-primary shadow-md mr-2"><a href="{{  route('admin.product.add') }}">Add New Product</a></button>
-            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of {{ $totalProduct }} products</div>
+
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
                     <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
@@ -60,7 +61,6 @@
                     <th class="text-center whitespace-nowrap">GENDER</th>
                     <th class="text-center whitespace-nowrap">PRICE</th>
                     <th class="text-center whitespace-nowrap">DISCOUNT PRICE</th>
-                    <th class="text-center whitespace-nowrap">DATE</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
             </thead>
@@ -74,17 +74,17 @@
                             @endphp
                             
                             @break
-                        @case(2)
+                        @case(3)
                             @php
                                 $item->type= 'Shirt'
                             @endphp
                             @break
-                        @case(3)
+                        @case(4)
                             @php
                                 $item->type= 'Jacket'
                             @endphp
                             @break
-                        @case(4)
+                        @case(2)
                             @php
                                 $item->type= 'Shoes'
                             @endphp
@@ -118,7 +118,6 @@
                     @default
                         
                 @endswitch
-               
                     <tr class="intro-x">
                         <td class="text-center">{{ $item->id }}</td>
                         <td class="w-60">
@@ -136,7 +135,7 @@
                         <td class="text-center">{{ $item->for_male }}</td>
                         <td class="text-center text-primary">${{ $item->price }}</td>
                         <td class="text-center text-primary">${{ $item->discount_price}}</td>
-                        <td class="text-center">{{ $item->created_at  }}</td>
+                        
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3" href="{{ route('admin.product.edit',['product_id'=>$item->id]) }}">
@@ -149,15 +148,20 @@
                         </td>
                     </tr>
                 @endforeach
+                
                 {{-- {{ $product->links() }} --}}
             </tbody>
+            
         </table>
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+            {{ $product->links('pagination::tailwind') }}
+        </div>
        
     </div>
     <!-- BEGIN: Modal Toggle -->
  
  <!-- BEGIN: Modal Content -->
- <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+ {{-- <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
      <div class="modal-dialog">
          <div class="modal-content">
              <div class="modal-body p-0">
@@ -171,7 +175,9 @@
              </div>
          </div>
      </div>
- </div> <!-- END: Modal Content -->
+ </div>  --}}
+ 
+ <!-- END: Modal Content -->
     <!-- END: Data List -->
     <!-- BEGIN: Pagination -->
     {{-- <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">

@@ -132,7 +132,35 @@
                     </table>
                 </div>
                 <br>
-                <button class="btn btn-primary items-center shadow-md mr-2"><a href="">Add Coupon</a></button>
+                
+            </div>
+            
+        </div>
+        <br>
+        <div class="col-span-12 lg:col-span-4 2xl:col-span-3">
+            <div class="box p-5 rounded-md">
+                <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">
+                    <div class="font-medium text-base truncate">Add Coupon</div>
+                    
+                </div>
+                <div class="overflow-auto lg:overflow-visible -mt-3">
+                    <div class="justify-center flex">
+                        <div class="dropdown"> 
+                            <button class=" dropdown-toggle btn btn-primary" aria-expanded="false" data-tw-toggle="dropdown">Coupon List</button> 
+                            <div class="dropdown-menu w-60"> 
+                                <ul class="dropdown-content"> 
+                                    @foreach ($couponList as $coupon)
+                                    <li> <a href="" class="dropdown-item">{{ $coupon->coupon_code }} - {{ $coupon->discount }}% </a> </li> 
+                                    @endforeach
+                                    
+                                </ul> 
+                            </div> 
+                        </div> 
+                    </div>
+                
+                </div>
+                <br>
+                
             </div>
             
         </div>

@@ -7,9 +7,10 @@ use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\Admin\AdminCouponComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminUserComponent;
- use App\Http\Livewire\Admin\AdminAddUserComponent;
+use App\Http\Livewire\Admin\AdminAddUserComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminEditProductComponent;
+use App\Http\Livewire\Admin\AdminEditUserComponent;
 use App\Http\Livewire\Admin\AdminUserDetailComponent;
 use App\Http\Livewire\Admin\AdminAddCouponComponent;
 use App\Http\Livewire\Admin\AdminEditCouponComponent;
@@ -25,8 +26,12 @@ use App\Http\Livewire\Admin\AdminOrderDetailComponent;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('layouts.app');
+});
+
  Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
- Route::get('/admin/category', AdminCategoriesComponent::class)->name('admin.categories');
+ Route::get('/admin/category/{category_id}', AdminCategoriesComponent::class)->name('admin.categories');
  Route::get('/admin/orders', AdminOrderComponent::class)->name('admin.orders');
  Route::get('/admin/orders/{order_id}', AdminOrderDetailComponent::class)->name('admin.ordersdetails');
 
@@ -38,7 +43,7 @@ use App\Http\Livewire\Admin\AdminOrderDetailComponent;
  Route::get('/admin/users', AdminUserComponent::class)->name('admin.users');
  Route::get('/admin/user/detail/{user_id}', AdminUserDetailComponent::class)->name('admin.user.detail');
  Route::get('/admin/user/add', AdminAddUserComponent::class)->name('admin.user.add');
- Route::get('/admin/user/edit/{user_id}', AdminAddUserComponent::class)->name('admin.user.edit');
+ Route::get('/admin/user/edit/{user_id}', AdminEditUserComponent::class)->name('admin.user.edit');
 
  Route::get('/admin/coupons', AdminCouponComponent::class)->name('admin.coupons');
  Route::get('/admin/coupon/add', AdminAddCouponComponent::class)->name('admin.coupon.add');
