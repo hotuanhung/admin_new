@@ -9,12 +9,20 @@ use Livewire\WithPagination;
 class AdminProductComponent extends Component
 {   
     use WithPagination;
-    public $product_id;
+    public $delete_item;
     public function deleteProduct()
     {
-        $item=Item::find($this->product_id);
-        $item->delete();
-        session()->flash('message','Product has been deleted!');
+        $item=Item::find($this->delete_item);
+        if (isset($item)){
+            $item->delete();
+            session()->flash('message','Product has been deleted!');
+        } 
+        redirect()->route('admin.products');
+    }
+
+    public function getConfirm($item_id){
+        $this->delete_item = $item_id;
+        error_log($item_id);
     }
     public function render()
     {

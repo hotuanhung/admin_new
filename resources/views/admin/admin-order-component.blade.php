@@ -1,4 +1,5 @@
-<div>
+@include('layouts.app')
+@section('main')
 <!-- BEGIN: Top Bar -->
 <div class="top-bar">
 
@@ -81,19 +82,17 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="whitespace-nowrap">
-                                    @switch($order->payment)
-                                        @case(1)
-                                            Cash On Delivery
-                                            @break
-                                        @case(2)
-                                            Credit card
-                                            @break
-                                        @case(3)
-                                            Paypal
-                                            @break
-                                    @endswitch
-                                </div>
+                                @switch($order->payment)
+                                @case(1)
+                                    Cash On Delivery
+                                    @break
+                                @case(2)
+                                    Credit card
+                                    @break
+                                @case(3)
+                                    Paypal
+                                    @break
+                                @endswitch
                             </td>
                             <td class="w-40 text-right">
                                 <div class="pr-16">${{ $order->total }}</div>
@@ -120,4 +119,4 @@
         </div>
         <!-- END: Data List -->
     </div>
-</div>
+@endsection

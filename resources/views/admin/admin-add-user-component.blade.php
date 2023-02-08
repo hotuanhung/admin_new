@@ -1,5 +1,6 @@
-<div>
-<!-- BEGIN: Top Bar -->
+@include('layouts.app')
+@section('main')
+    <!-- BEGIN: Top Bar -->
     <div class="top-bar">
 
         <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
@@ -101,10 +102,9 @@
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-email" type="email" class="form-control" placeholder="Email" wire:model="email">
-                                <div class="form-help text-right">Enter your email</div>
+                                <input id="product-name" type="mail" class="form-control" placeholder="First name" wire:model="email">
+                                <div class="form-help text-right">Maximum character : 255</div>
                             </div>
                             
                             
@@ -117,7 +117,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="w-full mt-3 xl:mt-0 flex-1">
                                 <input id="product-name" type="text" class="form-control" placeholder="Password" wire:model="password">
                                 <div class="form-help text-right">Maximum character : 255</div>
@@ -154,5 +153,6 @@
             </div>
             <!-- END: Product Information -->
         </div>
+        
     </div>
-</div>
+@endsection

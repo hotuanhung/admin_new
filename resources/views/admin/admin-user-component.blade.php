@@ -1,4 +1,5 @@
-<div>
+@include('layouts.app')
+@section('main')
 <div>
     <!-- BEGIN: Top Bar -->
     <div class="top-bar">
@@ -58,7 +59,7 @@
                     <tr>
                         <th class="whitespace-nowrap">USER NAME</th>               
                         <th class="text-center whitespace-nowrap">GENDER</th>
-                        <th class="text-center whitespace-nowrap">TYPE</th>
+                        <th class="text-center whitespace-nowrap">PASSWORD</th>
                         <th class="text-center whitespace-nowrap">PHONE</th>
                         <th class="text-center whitespace-nowrap">ADDRESS</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
@@ -80,7 +81,7 @@
                                 @break
                             @default
                             @php
-                            $gender= 'Unknown'
+                                $gender= 'Unknown'
                             @endphp
                             @break
                                 
@@ -92,20 +93,8 @@
                                 <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $human->email }}</div>
                             </td>
                             <td class="text-center text-primary">{{ $gender}}</td>
-                            <td class="text-center">
-                                @switch($human->type)
-                                @case(0)
-                                    Admin
-                                    @break
-                                @case(1)
-                                    User
-                                    @break
-                                @default
-                                    Guest
-                                    @break
-                                @endswitch
-                            </td>
                             <td class="text-center">{{ $human->phone }}</td>
+                            <td class="text-center">{{ $human->password }}</td>
                             <td class="text-center ">{{ $human->address }}</td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
@@ -197,4 +186,4 @@
         </div> --}}
         <!-- END: Pagination -->
     </div>
-</div>
+@endsection

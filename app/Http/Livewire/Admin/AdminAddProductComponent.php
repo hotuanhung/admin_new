@@ -4,55 +4,48 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Item;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class AdminAddProductComponent extends Component
 {   
-    public $name;
-    public $quantity;
-    public $type;
-    public $for_male;
-    public $price='0';
-    public $discount_price;
-    // public $image;
-    public $description;
-    // public $review;
-    // public $rate;
-    // public $created_at;
-    public function updated($field)
-    {
-       $this->validateOnly($field,[
-        'name'=>'required',
-        'quantity'=>'required',
-        'type'=>'required',
-        'for_male'=>'required',
-        'price'=>'required',
-        'discount_price'=>'required',
-       ]);
-    }
-    public function submit()
+    public function submitItem($data)
     {   
-        
-        $item = new Item();
-        $item->name = $this->name;
-        $item->quantity = $this->quantity;
-        $item->type = $this->type;
-        $item->for_male = $this->for_male;
-        $item->price = $this->price;
-        $item->discount_price = $this->discount_price;
-        // $item->created_at=Carbon::today();
-        $item->save();
-        
-        session()->flash('message','New product has been added sucessfully!');
-       $this->name = '';
-        $this->quantity = '';
-        $this->type = '';
-        $this->for_male = '';
-        $this->price = '';
-        $this->discount_price = '';
+        // $data = 
+        $validator = Validator::make($data,[
+            "type" => "required",
+            "product_name" => "required",
+            "quantity" => "required",
+            "for_male" => "required",
+            // "description" => "required",
+            "price" => "required",
+            "discount_price" => "required"
+        ]);
+        if ($validator){
+            $item = new Item();
+            $item->type = $data["type"];
+            $item->price = $data["price"];
+            $item->name = $data["product_name"];
+            $item->quantity = $data["quantity"];
+            $item->for_male = $data["for_male"];
+            $item->description = $data["description"];
+            $item->discount_price = $data["discount_price"];
+            if (isset($data["image"])){
+                $item->image = $data["image"];
+            } else {
+                $item->image = "";
+            }
+            $item->rate = 0;
+            $item->review = 0;
+            $item->save();
+            session()->flash('message','New product has been added sucessfully!');
+        } else {
+            session()->flash('message','Something is wrong!');
+        }
     }
     public function render()
     {
+        error_log("ALL");
         return view('livewire.admin.admin-add-product-component');
     }
 }

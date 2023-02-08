@@ -1,4 +1,2 @@
-@include('layouts.app')
-@section('main')
-HTH 
-@endsection
+<div>
+</div>

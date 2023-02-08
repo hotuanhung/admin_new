@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="en" class="light">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
@@ -17,7 +17,7 @@
         <!-- BEGIN: Mobile Menu -->
         <div class="mobile-menu md:hidden">
             <div class="mobile-menu-bar">
-                <a href="" class="flex mr-auto">
+                <a href="{{route('admin.dashboard')}}" class="flex mr-auto">
                     <img alt="Admin" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
                 </a>
                 <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
@@ -38,12 +38,6 @@
                         </a>
                         <ul class="">
                             <li>
-                                <a href="{{ route('admin.categories') }}" class="menu">
-                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="menu__title"> Categories </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="javascript:;" class="menu">
                                     <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="menu__title"> Products <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
@@ -58,7 +52,7 @@
                                     <li>
                                         <a href="{{ route('admin.product.add') }}" class="menu">
                                             <div class="menu__icon"> <i data-lucide="zap"></i> </div>
-                                            <div class="menu__title">Add New ProDuct</div>
+                                            <div class="menu__title">Add New Product</div>
                                         </a>
                                     </li>
                                 </ul>
@@ -127,8 +121,8 @@
         <div class="flex mt-[4.7rem] md:mt-0">
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
-                <a href="" class="intro-x flex items-center pl-5 pt-4">
-                    <img alt="Admin" class="w-6" src="dist/images/logo.svg">
+                <a href="{{route('admin.dashboard')}}" class="intro-x flex items-center pl-5 pt-4">
+                    <img alt="Admin" class="w-6" src="{{asset('admin/dist/images/logo.svg')}}">
                     <span class="hidden xl:block text-white text-lg ml-3"> Admin </span> 
                 </a>
                 <div class="side-nav__devider my-6"></div>
@@ -150,14 +144,7 @@
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
-                        <ul class="">
-                            <li>
-                                <a href="{{ route('admin.categories') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> Categories </div>
-                                </a>
-                            </li>
-                           
+                        <ul class="">                           
                             <li>
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
@@ -222,25 +209,21 @@
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a> 
-                                <ul class="">
-                                    <li>
-                                        <a href="{{ route('admin.users') }}" class="side-menu">
-                                            <div class="side-menu__icon"> <i data-lucide="zap"></i> </div>
-                                            <div class="side-menu__title">User List</div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.user.add') }}" class="side-menu">
-                                            <div class="side-menu__icon"> <i data-lucide="zap"></i> </div>
-                                            <div class="side-menu__title">Add New User</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                    </li>
-                    
-                    
-                    
-                    
+                            <ul class="">
+                                <li>
+                                    <a href="{{ route('admin.users') }}" class="side-menu">
+                                        <div class="side-menu__icon"> <i data-lucide="zap"></i> </div>
+                                        <div class="side-menu__title">User List</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.user.add') }}" class="side-menu">
+                                        <div class="side-menu__icon"> <i data-lucide="zap"></i> </div>
+                                        <div class="side-menu__title">Add New User</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                 </ul>
             </nav>
             <!-- END: Side Menu -->
@@ -248,17 +231,14 @@
             <div class="content">
                 <main class="main">
                     @yield('main')
-                </main>
-                
+                </main>           
             </div>
             <!-- END: Content -->
         </div>
-        
-        <!-- BEGIN: JS Assets-->
-
-        <script src="{{ asset('admin/dist/js/app.js') }}">
-        </script>
-        <!-- END: JS Assets-->
         @livewireScripts
+        <!-- BEGIN: JS Assets-->
+        <script src="{{ asset('admin/dist/js/app.js') }}"> </script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v3.x.x/dist/alpine.min.js"></script>
+        <!-- END: JS Assets-->
     </body>
 </html>

@@ -18,9 +18,11 @@ class AdminOrderDetailComponent extends Component
     }
     public function render()
     {
-
         $orderItem=OrderItem::where('order_id',$this->order_id)->get();
         $order = Order::where('id',$this->order_id)->first();
-        return view('livewire.admin.admin-order-detail-component',['orderItem'=>$orderItem,'order'=>$order]);
+        return view('livewire.admin.admin-order-detail-component',[        
+            'orderItem'=>$orderItem,
+            'order'=>$order]
+        );
     }
 }

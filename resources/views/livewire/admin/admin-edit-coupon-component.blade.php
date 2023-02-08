@@ -1,4 +1,3 @@
-@include('layouts.app')
-@section('main')
-HTH 
-@endsection
+<div>
+    edit coupon
+</div>
