@@ -14,7 +14,6 @@ class AdminOrderComponent extends Component
     {
         $this->change_order=$order_id;
         $order= Order::find($this->change_order);
-        dd($order);
         if($order->isApproved == '1')
         {
             $order->isApproved='0';
@@ -23,7 +22,7 @@ class AdminOrderComponent extends Component
         {
             $order->isApproved='1';
         }
-        $order->save;
+        $order->save();
         session()->flash('message','Order has been changed!');
         redirect()->route('admin.orders');
     }

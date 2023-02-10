@@ -15,6 +15,28 @@ class AdminUserDetailComponent extends Component
         $this->$user_id = $user_id;
         
     }
+    // public function create_coupon($coupon_id)
+    // {
+    //     $hasCoupon=new HasCoupon;
+    //     // $hasCoupon->coupon_id=;
+    //     $hasCoupon->user_id=$this->user_id;
+    // }
+    public $delete_coupon;
+    public function deleteCoupon()
+    {
+        $coupon_user=HasCoupon::find($this->delete_coupon);
+        if (isset($coupon_user)){
+            $coupon_user->delete();
+            session()->flash('message',' User coupon has been deleted! ');
+        } 
+        // redirect()->route('admin.user.detail');
+    }
+
+    public function getConfirm($coupon_id){
+        $this->delete_coupon = $coupon_id;
+        error_log($coupon_id);
+    }
+
     public function render()
     {
         $couponList=Coupon::orderBy('id','DESC')->get();
