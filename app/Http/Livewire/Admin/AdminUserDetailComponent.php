@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Models\Order;
 use App\Models\HasCoupon;
+use App\Models\Coupon;
 use App\Models\User;
 class AdminUserDetailComponent extends Component
 {
@@ -16,6 +17,7 @@ class AdminUserDetailComponent extends Component
     }
     public function render()
     {
+        $couponList=Coupon::orderBy('id','DESC')->get();
         $orders=Order::where('user_id',$this->user_id)->get();
         $sum=Order::where('user_id',$this->user_id)->sum('total');
         $user = User::where('id',$this->user_id)->first();
@@ -24,7 +26,8 @@ class AdminUserDetailComponent extends Component
             'user'=> $user,
             'orders'=> $orders,
             'sum'=>$sum,
-            'coupons'=>$coupons
+            'coupons'=>$coupons,
+            'couponList'=>$couponList,
         ]);
     }
 }

@@ -38,6 +38,12 @@
                         </a>
                         <ul class="">
                             <li>
+                                <a href="{{ route('admin.categories',['category_id'=>'1']) }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Categories </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="javascript:;" class="menu">
                                     <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="menu__title"> Products <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
@@ -135,7 +141,6 @@
                             </div>
                         </a>
                     </li>
-                  
                     <li>
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
@@ -144,7 +149,13 @@
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
-                        <ul class="">                           
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('admin.categories',['category_id'=>'1'])  }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Categories </div>
+                                </a>
+                            </li>                         
                             <li>
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>

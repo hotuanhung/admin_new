@@ -49,7 +49,7 @@
                         @if (session()->has('message'))
                             <div class="alert alert-success text-center">{{ session('message') }}</div>
                         @endif
-                        <form wire:submit.prevent="submit" class="items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0" >
+                        <form id="form_add_user" wire:submit.prevent="submitUser(Object.fromEntries(new FormData($event.target)))" method="post" class="items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
                             <div class="form-label ">
                                 <div class="text-left">
                                     <div class="flex items-center">
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-name" type="text" class="form-control" placeholder="First name" wire:model="firstname">
+                                <input id="firstname" type="text" class="form-control" placeholder="First name" name="firstname">
                                 <div class="form-help text-right">Maximum character : 255</div>
                             </div>
                             <div class="form-label ">
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-name" type="text" class="form-control" placeholder="Last name" wire:model="lastname">
+                                <input id="lastname" type="text" class="form-control" placeholder="Last name" name="lastname">
                                 <div class="form-help text-right">Maximum character : 255</div>
                             </div>
                              <!--Gender-->
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <select id="category" class="form-select" wire:model="gender">
+                                <select id="gender" class="form-select" name="gender">
                                     <option value="1">Men</option>
                                     <option value="2">Women</option>
                                 </select>
@@ -103,7 +103,7 @@
                             </div>
                             
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-email" type="email" class="form-control" placeholder="Email" wire:model="email">
+                                <input id="email" type="email" class="form-control" placeholder="Email" name="email">
                                 <div class="form-help text-right">Enter your email</div>
                             </div>
                             
@@ -119,10 +119,23 @@
                             </div>
 
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <input id="product-name" type="text" class="form-control" placeholder="Password" wire:model="password">
+                                <input id="password" type="text" class="form-control" placeholder="Password" name="password">
                                 <div class="form-help text-right">Maximum character : 255</div>
                             </div>
-              
+                            <!--phone-->
+                            <div class="form-label ">
+                                <div class="text-left">
+                                    <div class="flex items-center">
+                                        <div class="font-medium">Phone</div>
+                                        <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="w-full mt-3 xl:mt-0 flex-1">
+                                <input id="phone" type="text" class="form-control" placeholder="Phone" name="phone">
+                                <div class="form-help text-right">Enter your phone</div>
+                            </div>
                             <!--address--> 
                             <br>
                             <div class="form-label ">
@@ -136,13 +149,13 @@
                             </div>
                             
                             <div class="w-full mt-3 xl:mt-0 flex-1">
-                                <textarea id="product-name" type="text" class="form-control" placeholder="Address" wire:model="address"></textarea>
+                                <textarea id="address" type="text" class="form-control" placeholder="Address" name="address"></textarea>
                                 <div class="form-help text-right">Maximum character 0/2000</div>
                             </div>
                             <br>
                             <br>
                             <div class="w-full mt-3 xl:mt-0 flex-1 xl:text-right">
-                                <button class="btn btn-primary w-44" type="submit">
+                                <button class="btn btn-primary w-44" type="submit" form="form_add_user">
                                     <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Add User
                                 </button>
                             </div>

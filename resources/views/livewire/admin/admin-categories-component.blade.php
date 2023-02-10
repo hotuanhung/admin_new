@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Admin</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Product List</li>
+            <li class="breadcrumb-item active" aria-current="page">Category</li>
         </ol>
     </nav>
     
@@ -33,17 +33,55 @@
     </div>
     
 </div> 
-<h2 class="intro-y text-lg font-medium mt-10">Product List</h2>
+            @switch($category_id)
+                        @case(1)
+                            @php
+                                $category= 'Clothes'
+                            @endphp
+                            
+                            @break
+                        @case(3)
+                            @php
+                                $category= 'Shirt'
+                            @endphp
+                            @break
+                        @case(4)
+                            @php
+                                $category= 'Jacket'
+                            @endphp
+                            @break
+                        @case(2)
+                            @php
+                                $category= 'Shoes'
+                            @endphp
+                            @break
+                        @default
+                        @php
+                        $category= 'Unknow'
+                        @endphp
+                        @break
+
+                            
+                    @endswitch
+<h2 class="intro-y text-lg font-medium mt-10">{{ $category }} List</h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <button class="btn btn-primary shadow-md mr-2"><a href="{{  route('admin.product.add') }}">Add New Product</a></button>
-
-            {{-- <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
-                <div class="w-56 relative text-slate-500">
-                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
-                </div>
-            </div> --}}
+            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+                <div class="dropdown"> 
+                    <button class="dropdown-toggle btn btn-primary" aria-expanded="false" data-tw-toggle="dropdown">
+                        Choose category
+                    </button> 
+                    <div class="dropdown-menu w-40"> 
+                        <ul class="dropdown-content"> 
+                            <li> <a href="{{ route('admin.categories',['category_id'=>'1'])  }}" class="dropdown-item">Clothes </a> </li>
+                            <li> <a href="{{ route('admin.categories',['category_id'=>'4'])  }}" class="dropdown-item">Jacket</a> </li> 
+                            <li> <a href="{{ route('admin.categories',['category_id'=>'3'])  }}" class="dropdown-item">Shirt</a> </li> 
+                            <li> <a href="{{ route('admin.categories',['category_id'=>'2'])  }}" class="dropdown-item">Shoes</a> </li> 
+                        </ul> 
+                    </div> 
+                </div> 
+                
+            </div>
         </div>
     </div>
     <!-- BEGIN: Data List -->
@@ -55,7 +93,6 @@
                     <th class="whitespace-nowrap">IMAGES</th>
                     <th class="whitespace-nowrap">PRODUCT NAME</th>
                     <th class="text-center whitespace-nowrap">STOCK</th>
-                
                     <th class="text-center whitespace-nowrap">GENDER</th>
                     <th class="text-center whitespace-nowrap">PRICE</th>
                     <th class="text-center whitespace-nowrap">DISCOUNT PRICE</th>
@@ -64,38 +101,6 @@
             </thead>
             <tbody>
                 @foreach ($product as $item)
-                
-                    @switch($item->type)
-                        @case(1)
-                            @php
-                                $item->type= 'Clothes'
-                            @endphp
-                            
-                            @break
-                        @case(3)
-                            @php
-                                $item->type= 'Shirt'
-                            @endphp
-                            @break
-                        @case(4)
-                            @php
-                                $item->type= 'Jacket'
-                            @endphp
-                            @break
-                        @case(2)
-                            @php
-                                $item->type= 'Shoes'
-                            @endphp
-                            @break
-                        @default
-                        @php
-                        $item->type= 'Unknow'
-                        @endphp
-                        @break
-
-                            
-                    @endswitch
-
                     @switch($item->for_male)
                     @case(1)
                         @php
@@ -115,7 +120,7 @@
                         @break
                     @default
                         
-                @endswitch
+                    @endswitch
                     <tr class="intro-x">
                         <td class="text-center">{{ $item->id }}</td>
                         <td class="w-60">
@@ -127,7 +132,6 @@
                         </td>
                         <td>
                             <a href=""class="font-medium whitespace-nowrap">{{ $item->name}}</a>
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $item->type }}</div>
                         </td>
                         <td class="text-center">{{ $item->quantity }}</td>
                         <td class="text-center">{{ $item->for_male }}</td>
@@ -136,12 +140,9 @@
                         
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="{{ route('admin.product.edit',['product_id'=>$item->id]) }}">
+                                <a class="flex items-center mr-3 text-success" href="{{ route('admin.product.edit',['product_id'=>$item->id]) }}">
                                     <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                 </a>
-                                <button class="flex items-center text-danger" wire:click.prevent="getConfirm({{$item->id}})" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
-                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                </button>
                             </div>
                         </td>
                     </tr>
@@ -149,17 +150,16 @@
                 
                 {{-- {{ $product->links() }} --}}
             </tbody>
-            
         </table>
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+        <div class="">
             {{ $product->links('pagination::tailwind') }}
         </div>
-    
+       
     </div>
     <!-- BEGIN: Modal Toggle -->
-
-<!-- BEGIN: Modal Content -->
-<div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+ 
+ <!-- BEGIN: Modal Content -->
+ <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body p-0">
@@ -175,8 +175,8 @@
         </div>
     </div>
 </div> 
-
-<!-- END: Modal Content -->
+ 
+ <!-- END: Modal Content -->
     <!-- END: Data List -->
     <!-- BEGIN: Pagination -->
     {{-- <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">

@@ -39,9 +39,6 @@
             <div class="box p-5 rounded-md">
                 <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5 mb-5">
                     <div class="font-medium text-base truncate">Order Details</div>
-                    <a href="" class="flex items-center ml-auto text-primary">
-                        <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Change Status
-                    </a>
                 </div>
                 
                 <div class="flex items-center">
@@ -56,6 +53,9 @@
                     <span class="flex items-center justify-center whitespace-nowrap ml-1  {{ $order->isApproved  ? 'text-success' : 'text-pending' }}">
                         <i data-lucide="check-square" class="w-4 h-4 mr-2 ml-1"></i> {{ $order->isApproved  ? 'Completed' : 'Pending Payment' }}
                     </span>
+                </div>
+                <div class="flex items-center mt-3">
+                    <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i>Note: <p class=" ml-1">{{ $order->note }}</p>
                 </div>
             </div>
             <div class="box p-5 rounded-md mt-5">
@@ -110,11 +110,11 @@
                 </div>
                 @endif
                 <div class="flex items-center mt-3">
-                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i>  Shipping Cost : <div class="ml-auto">$0</div>
+                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i>  Shipping Cost : <div class="ml-auto">$1</div>
                 </div>
             
                 <div class="flex items-center border-t border-slate-200/60 dark:border-darkmode-400 pt-5 mt-5 font-medium">
-                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i> Grand Total: <div class="ml-auto">${{  $order->total+0  }}</div>
+                    <i data-lucide="credit-card" class="w-4 h-4 text-slate-500 mr-2"></i> Grand Total: <div class="ml-auto">${{  $order->total+1  }}</div>
                 </div>
             </div>
         

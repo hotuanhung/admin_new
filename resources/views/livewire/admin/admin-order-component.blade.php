@@ -42,12 +42,16 @@
                 </div>
  
             </div>
-            <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 10 of {{ $orders->count() }} orders</div>
             
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+            @if (session()->has('message'))
+            <br>
+            <div class="alert alert-success text-center">{{ session('message') }}</div>
+            @endif
             <table class="table table-report -mt-2">
+
                 <thead>
                     <tr>
                      
@@ -108,15 +112,19 @@
                                     <a class="flex items-center text-primary whitespace-nowrap mr-5" href="{{ route('admin.ordersdetails',['order_id'=>$order->id])}}">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details
                                     </a>
-                                    <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                    <button class="flex items-center text-primary" wire:click.prevent="updateOrder({{ $order->id }})" >
                                         <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status
-                                    </a>
+                                    </button>
+                                    
                                 </div>
                             </td>
                         </tr>
                     @endforeach 
                 </tbody>
             </table>
+            <div>
+                {{ $orders->links('pagination::tailwind') }}
+            </div>
         </div>
         <!-- END: Data List -->
     </div>

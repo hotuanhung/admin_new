@@ -44,6 +44,7 @@
                     </div>
                     <div class="mt-5">
                         @if (session()->has('message'))
+                            <br>
                             <div class="alert alert-success text-center">{{ session('message') }}</div>
                         @endif
                         <form id="form_add_item" wire:submit.prevent="submitItem(Object.fromEntries(new FormData($event.target)))" method="post" class="items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
@@ -115,8 +116,12 @@
                             <div class="form-label ">
                                 <div class="text-left">
                                     <div class="flex items-center">
-                                        <div class="font-medium">Image</div>
+                                        <div class="font-medium">Product Image</div>
                                         <!-- <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div> -->
+                                    </div>
+                                    <div class="leading-relaxed text-slate-500 text-xs mt-3">
+                                        <div>The image format is .jpg .jpeg .png and a minimum size of 300 x 300 pixels (For optimal images use a minimum size of 700 x 700 pixels).</div>
+
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +154,7 @@
                                 <div class="text-left">
                                     <div class="flex items-center">
                                         <div class="font-medium">Product Description</div>
-                                        <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
+                                        {{-- <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div> --}}
                                     </div>
                                     <div class="leading-relaxed text-slate-500 text-xs mt-3">
                                         <div>Make sure the product description provides a detailed explanation of your product so that it is easy to understand and find your product.</div>

@@ -10,12 +10,20 @@ use Livewire\WithPagination;
 class AdminUserComponent extends Component
 {
     use WithPagination;
-    public $user_id;
-    public function deleteUser($id)
+    public $delete_user;
+    public function deleteUser()
     {
-        $delete_user = User::where('id', $id)->first();
-        $delete_user->delete();
-        session()->flash('message','Delete sucessfully!');
+        $user=User::find($this->delete_user);
+        if (isset($user)){
+            $user->delete();
+            session()->flash('message','User has been deleted!');
+        } 
+        redirect()->route('admin.users');
+    }
+
+    public function getConfirm($user_id){
+        $this->delete_user = $user_id;
+        error_log($user_id);
     }
     public function render()
     {

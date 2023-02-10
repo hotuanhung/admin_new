@@ -40,7 +40,7 @@ class AdminController extends Controller
     }
     public function EditUser($user_id){
         $value = 9;
-        return view('admin', compact('value'));
+        return view('admin', compact('value','user_id'));
     }
     public function Order(){
         $value = 10;
@@ -58,8 +58,12 @@ class AdminController extends Controller
         $value = 13;
         return view('admin', compact('value'));
     }
+    public function ShowCategory($category_id){
+        $value = 15;
+        return view('admin', compact('value','category_id'));
+    }
     public function UserDetail($user_id){
-        $value = 13;
+        $value = 14;
         return view('admin', compact('value', 'user_id'));
     }
 }

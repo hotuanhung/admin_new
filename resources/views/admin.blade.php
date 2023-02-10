@@ -25,10 +25,16 @@
         ])
         @break
     @case(8)
-        @livewire("admin.admin-edit-product-component")
+        @livewire("admin.admin-edit-product-component",
+        [
+            'product_id' => $product_id
+        ])
         @break
     @case(9)
-        @livewire("admin.admin-edit-user-component")
+        @livewire("admin.admin-edit-user-component",
+        [
+            'user_id' => $user_id
+        ])
         @break
     @case(10)
         @livewire("admin.admin-order-component")
@@ -49,6 +55,11 @@
             'user_id' => $user_id
         ])
         @break
+    @case(15)
+    @livewire("admin.admin-categories-component", [
+        'category_id' => $category_id
+    ])
+    @break
     @default
         @livewire("admin.admin-dashboard-component")
         @break

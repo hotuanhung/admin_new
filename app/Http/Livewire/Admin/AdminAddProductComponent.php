@@ -37,6 +37,7 @@ class AdminAddProductComponent extends Component
             }
             $item->rate = 0;
             $item->review = 0;
+            $item->created_at=Carbon::today();
             $item->save();
             session()->flash('message','New product has been added sucessfully!');
         } else {

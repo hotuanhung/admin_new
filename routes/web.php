@@ -28,6 +28,7 @@ use App\Http\Livewire\Admin\AdminOrderDetailComponent;
 */
 Route::get('/', [AdminController::class, 'index'])->name('home');
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/category/{category_id}', [AdminController::class, 'ShowCategory'])->name('admin.categories');
 Route::get('/admin/orders', [AdminController::class, 'Order'])->name('admin.orders');
 Route::get('/admin/orders/{order_id}', [AdminController::class, 'OrderDetail'])->name('admin.ordersdetails');
 
@@ -42,6 +43,6 @@ Route::get('/admin/user/detail/{user_id}', [AdminController::class, 'UserDetail'
 Route::get('/admin/user/add', [AdminController::class, 'AddUser'])->name('admin.user.add');
 Route::get('/admin/user/edit/{user_id}', [AdminController::class, 'EditUser'])->name('admin.user.edit');
 
-Route::get('/admin/coupons', AdminCouponComponent::class)->name('admin.coupons');
-Route::get('/admin/coupon/add', AdminAddCouponComponent::class)->name('admin.coupon.add');
+Route::get('/admin/coupons', [AdminController::class,'Coupon'])->name('admin.coupons');
+Route::get('/admin/coupon/add', [AdminController::class,'AddCoupon'])->name('admin.coupon.add');
 Route::get('/admin/coupon/edit/{coupon_id}', AdminEditCouponComponent::class)->name('admin.coupon.edit');
