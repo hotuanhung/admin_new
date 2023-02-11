@@ -36,10 +36,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
             <div class="flex w-full sm:w-auto">
-                <div class="w-48 relative text-slate-500">
-                    <input type="text" class="form-control w-48 box pr-10" placeholder="Search by id...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
-                </div>
+                
  
             </div>
             
